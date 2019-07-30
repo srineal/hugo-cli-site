@@ -50,6 +50,15 @@ if [ -e $BUILD_DIR/.hugotheme ]; then
   git clone $THEME_URL
 fi
 
+# fetching default theme
+echo "\n-----> Getting the default theme"
+THEME_URL="https://github.com/StefMa/hugo-fresh.git"
+rm -rf $BUILD_DIR/themes && mkdir $BUILD_DIR/themes && cd $BUILD_DIR/themes
+git clone $THEME_URL
+cd $BUILD_DIR
+rm config.toml
+curl -O https://raw.githubusercontent.com/StefMa/hugo-fresh/master/exampleSite/config.yaml
+
 # Build the site
 echo "\n-----> Building the site"
 cd $BUILD_DIR
